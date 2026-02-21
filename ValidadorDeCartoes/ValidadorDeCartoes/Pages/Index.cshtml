@@ -1,0 +1,28 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Validador de Cartões";
+}
+
+<div class="row">
+    <div class="col-md-6 offset-md-3">
+        <h1 class="mt-4">Validador de Cartões</h1>
+
+        <form method="post">
+            <div class="mb-3">
+                <label asp-for="CardNumber" class="form-label">Número do cartão</label>
+                <input asp-for="CardNumber" class="form-control" placeholder="Digite apenas números" />
+                <span asp-validation-for="CardNumber" class="text-danger"></span>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Verificar</button>
+        </form>
+
+        @if (!string.IsNullOrEmpty(Model.Result))
+        {
+            <div class="alert alert-info mt-3">Resultado: @Model.Result</div>
+        }
+    </div>
+</div>
+
+<partial name="_ValidationScriptsPartial" />
